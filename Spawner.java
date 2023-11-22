@@ -36,6 +36,6 @@ public class Spawner extends Actor
                 world.addObject(snake, rand.nextInt(0, w-1), h-1);
             }
         }
-        
+        sleepFor(40);
     }
 }
