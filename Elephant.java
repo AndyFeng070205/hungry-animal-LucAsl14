@@ -6,23 +6,29 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Elephant extends Actor
 {
+    int shootTimer = 25;
     /**
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+        shootTimer--;
         if(Greenfoot.isKeyDown("s"))
             move(-3);
         if(Greenfoot.isKeyDown("w"))
-            move(3);
+            move(4);
         if(Greenfoot.isKeyDown("d"))
-            turn(7);
+            turn(5);
         if(Greenfoot.isKeyDown("a"))
             turn(-5);
         if(Greenfoot.isKeyDown("SPACE")){
-            Spit s = new Spit(6, getRotation());
-            getWorld().addObject(s, getX(), getY());
+            if(shootTimer<=0){
+                Spit s = new Spit(6, getRotation());
+                getWorld().addObject(s, getX(), getY());
+                shootTimer = 25;
+            }
         }
+
     }
 }

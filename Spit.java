@@ -23,10 +23,7 @@ public class Spit extends Actor
             turn(dir-getRotation());
         }
         move(vel);
-        if(getX()>=getWorld().getWidth()-1
-         ||getX()<=0
-         ||getY()>=getWorld().getHeight()-1
-         ||getY()<=0){
+        if(isAtEdge()){
              getWorld().removeObject(this);
         }
     }
