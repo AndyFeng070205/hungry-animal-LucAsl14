@@ -14,9 +14,11 @@ public class Enemy extends Actor
      */
     public void act()
     {
-        int elephX = getWorld().e.getX();
-        int elephY = getWorld().e.getY();
-        
+        MyWorld world = (MyWorld) getWorld();
+        int elephX = world.elephant.getX();
+        int elephY = world.elephant.getY();
+        turnTowards(elephX, elephY);
+        move(3);
     }
     
 }

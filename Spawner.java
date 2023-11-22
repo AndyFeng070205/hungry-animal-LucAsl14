@@ -16,7 +16,26 @@ public class Spawner extends Actor
     {
         
         //enemy making
+        MyWorld world = (MyWorld) getWorld();
         Random rand = new Random();
+        int side = rand.nextInt(1, 4);
+        int h = world.getHeight();
+        int w = world.getWidth();
+        Enemy snake = new Enemy();
+        switch(side){
+            case 1:{
+                world.addObject(snake, 0, rand.nextInt(0, h-1));
+            }
+            case 2:{
+                world.addObject(snake, rand.nextInt(0, w-1), 0);
+            }
+            case 3:{
+                world.addObject(snake, w-1, rand.nextInt(0, h-1));
+            }
+            case 4:{
+                world.addObject(snake, rand.nextInt(0, w-1), h-1);
+            }
+        }
         
     }
 }

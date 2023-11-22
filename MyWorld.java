@@ -8,7 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    public Elephant e = new Elephant();
+    public Elephant elephant = new Elephant();
+    public Spawner spawner = new Spawner();
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -16,15 +17,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         super(1400, 800, 1);
-        makeElephant(getWidth()/2, getHeight()/2);
+        addObject(elephant, getWidth()/2, getHeight()/2);
+        addObject(spawner, 0, 0);
     }
-    private void makeElephant(int x, int y){
-        addObject(e, x, y);
-    }
-    // public int getElephantLocation(boolean isX){
-        // if(isX)
-            // return e.getX();
-        // else 
-            // return e.getY();
-    // }
 }
