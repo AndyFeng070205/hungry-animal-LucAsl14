@@ -10,6 +10,7 @@ public class MyWorld extends World
 {
     public Elephant elephant = new Elephant();
     public Spawner spawner = new Spawner();
+    public Counter counter = new Counter("score: ");
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -17,7 +18,9 @@ public class MyWorld extends World
     public MyWorld()
     {    
         super(1400, 800, 1);
+        setBackground("background.jpg");
         addObject(elephant, getWidth()/2, getHeight()/2);
         addObject(spawner, 0, 0);
+        addObject(counter, 1200, 50);
     }
 }

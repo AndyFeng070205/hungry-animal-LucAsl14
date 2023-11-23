@@ -21,6 +21,7 @@ public class Spit extends Actor
     {
         if(isTouching(Enemy.class)){
            removeTouching(Enemy.class);
+           ((MyWorld)getWorld()).counter.add(1);
            getWorld().removeObject(this);
            return;
         }
