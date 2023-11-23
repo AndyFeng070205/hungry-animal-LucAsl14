@@ -19,6 +19,12 @@ public class Spit extends Actor
      */
     public void act()
     {
+        if(isTouching(Enemy.class)){
+           removeTouching(Enemy.class);
+           ((MyWorld)getWorld()).counter.add(1);
+           getWorld().removeObject(this);
+           return;
+        }
         while(getRotation()!=dir){
             turn(dir-getRotation());
         }
