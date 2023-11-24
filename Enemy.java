@@ -15,15 +15,15 @@ public class Enemy extends Actor
     public void act()
     {
         MyWorld world = (MyWorld) getWorld();
-        if(world.getObjects(Elephant.class).size()!=0){
-            int elephX = world.elephant.getX();
-            int elephY = world.elephant.getY();
-            turnTowards(elephX, elephY);
-        }
-        move(1);
-        if(isTouching(Elephant.class)){
-            removeTouching(Elephant.class);
-        }
+            if(world.getObjects(Elephant.class).size()!=0){
+                int elephX = world.elephant.getX();
+                int elephY = world.elephant.getY();
+                turnTowards(elephX, elephY);
+            }
+            move(1);
+            if(isTouching(Elephant.class)){
+                removeTouching(Elephant.class);
+            }
     }
     
 }

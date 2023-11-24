@@ -18,22 +18,54 @@ public class Spawner extends Actor
         //enemy making
         MyWorld world = (MyWorld) getWorld();
         Random rand = new Random();
-        int side = rand.nextInt(1, 4);
+        int side = rand.nextInt(1, 5);
         int h = world.getHeight();
         int w = world.getWidth();
+        int whatSpawn = rand.nextInt(1,3);
         Enemy snake = new Enemy();
-        switch(side){
-            case 1:{
-                world.addObject(snake, 0, rand.nextInt(0, h-1));
+        Enemy2 archer = new Enemy2();
+        switch(whatSpawn){
+            case 0:{
+                switch(side){
+                    case 1:{
+                        world.addObject(snake, 0, rand.nextInt(0, h-1));
+                        break;
+                    }
+                    case 2:{
+                        world.addObject(snake, rand.nextInt(0, w-1), 0);
+                        break;
+                    }
+                    case 3:{
+                        world.addObject(snake, w-1, rand.nextInt(0, h-1));
+                        break;
+                    }
+                    case 4:{
+                        world.addObject(snake, rand.nextInt(0, w-1), h-1);
+                        break;
+                    }
+                }
+                break;
             }
             case 2:{
-                world.addObject(snake, rand.nextInt(0, w-1), 0);
-            }
-            case 3:{
-                world.addObject(snake, w-1, rand.nextInt(0, h-1));
-            }
-            case 4:{
-                world.addObject(snake, rand.nextInt(0, w-1), h-1);
+                switch(side){
+                    case 1:{
+                        world.addObject(archer, 0, rand.nextInt(0, h-1));
+                        break;
+                    }
+                    case 2:{
+                        world.addObject(archer, rand.nextInt(0, w-1), 0);
+                        break;
+                    }
+                    case 3:{
+                        world.addObject(archer, w-1, rand.nextInt(0, h-1));
+                        break;
+                    }
+                    case 4:{
+                        world.addObject(archer, rand.nextInt(0, w-1), h-1);
+                        break;
+                    }
+                }
+                break;
             }
         }
         sleepFor(20);
