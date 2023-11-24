@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Spit here.
+ * Write a description of class EnemySpit here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Spit extends Actor
+public class EnemySpit extends Actor
 {
     int vel, dir;
-    public Spit(int velocity, int direction){
+    public EnemySpit(int velocity, int direction){
         vel = velocity;
         dir = direction;
     }
@@ -19,10 +19,8 @@ public class Spit extends Actor
      */
     public void act()
     {
-        if(isTouching(Enemy.class)
-         ||isTouching(Enemy2.class)){
+        if(isTouching(Elephant.class)){
            removeTouching(null);
-           ((MyWorld)getWorld()).counter.add(1);
            getWorld().removeObject(this);
            return;
         }
