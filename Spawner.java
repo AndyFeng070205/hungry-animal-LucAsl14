@@ -25,7 +25,7 @@ public class Spawner extends Actor
         Enemy snake = new Enemy();
         Enemy2 archer = new Enemy2();
         switch(whatSpawn){
-            case 0:{
+            case 1:{
                 switch(side){
                     case 1:{
                         world.addObject(snake, 0, rand.nextInt(0, h-1));
@@ -68,6 +68,6 @@ public class Spawner extends Actor
                 break;
             }
         }
-        sleepFor(20);
+        sleepFor(50);
     }
 }

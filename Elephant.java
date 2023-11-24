@@ -19,9 +19,9 @@ public class Elephant extends Actor
         if(Greenfoot.isKeyDown("w"))
             move(4);
         if(Greenfoot.isKeyDown("d"))
-            turn(5);
+            turn(4);
         if(Greenfoot.isKeyDown("a"))
-            turn(-5);
+            turn(-4);
         if(Greenfoot.isKeyDown("SPACE")){
             if(shootTimer<=0){
                 Spit s = new Spit(6, getRotation());
