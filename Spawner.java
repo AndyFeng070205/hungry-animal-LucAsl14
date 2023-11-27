@@ -21,50 +21,24 @@ public class Spawner extends Actor
         int side = rand.nextInt(1, 5);
         int h = world.getHeight();
         int w = world.getWidth();
-        int whatSpawn = rand.nextInt(1,3);
+        int roll = rand.nextInt(3);
         Enemy snake = new Enemy();
         Enemy2 archer = new Enemy2();
-        switch(whatSpawn){
+        switch(side){
             case 1:{
-                switch(side){
-                    case 1:{
-                        world.addObject(snake, 0, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 2:{
-                        world.addObject(snake, rand.nextInt(0, w-1), 0);
-                        break;
-                    }
-                    case 3:{
-                        world.addObject(snake, w-1, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 4:{
-                        world.addObject(snake, rand.nextInt(0, w-1), h-1);
-                        break;
-                    }
-                }
+                world.addObject(snake, 0, rand.nextInt(0, h-1));
                 break;
             }
             case 2:{
-                switch(side){
-                    case 1:{
-                        world.addObject(archer, 0, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 2:{
-                        world.addObject(archer, rand.nextInt(0, w-1), 0);
-                        break;
-                    }
-                    case 3:{
-                        world.addObject(archer, w-1, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 4:{
-                        world.addObject(archer, rand.nextInt(0, w-1), h-1);
-                        break;
-                    }
-                }
+                world.addObject(snake, rand.nextInt(0, w-1), 0);
+                break;
+            }
+            case 3:{
+                world.addObject(snake, w-1, rand.nextInt(0, h-1));
+                break;
+            }
+            case 4:{
+                world.addObject(snake, rand.nextInt(0, w-1), h-1);
                 break;
             }
         }

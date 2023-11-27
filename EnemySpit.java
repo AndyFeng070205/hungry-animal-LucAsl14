@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class EnemySpit extends Actor
 {
+    MyWorld world = (MyWorld) getWorld();
     int vel, dir;
     public EnemySpit(int velocity, int direction){
         vel = velocity;
@@ -19,9 +20,11 @@ public class EnemySpit extends Actor
      */
     public void act()
     {
+        MyWorld world = (MyWorld) getWorld();
         if(isTouching(Elephant.class)){
-           removeTouching(null);
-           getWorld().removeObject(this);
+           removeTouching(Elephant.class);
+           world.gameOver();
+           world.removeObject(this);
            return;
         }
         while(getRotation()!=dir){
@@ -29,7 +32,7 @@ public class EnemySpit extends Actor
         }
         move(vel);
         if(isAtEdge()){
-             getWorld().removeObject(this);
+             world.removeObject(this);
         }
     }
 }
