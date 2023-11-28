@@ -29,7 +29,7 @@ public class Spit extends Actor
            getWorld().removeObject(this);
            return;
         }
-        if(Greenfoot.isKeyDown("SPACE")&&!world.elephant.checkExceed()&&isNew){
+        if(Greenfoot.isKeyDown("SPACE")&&isNew){
             return;
         }
         while(getRotation()!=dir){
