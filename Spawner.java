@@ -8,6 +8,15 @@ import java.util.*;
  */
 public class Spawner extends Actor
 {
+    int spawnDelay = 50;
+    //spawn chances for {snake, archer}
+    int[] chances = {0,     20,     80};
+    int[] prefixSum = new int[chances.length+1];
+    public Spawner(){
+        for(int i=1; i<chances.length; i++){
+            prefixSum[i] = chances[i]+prefixSum[i-1];
+        }
+    }
     /**
      * Act - do whatever the Spawner wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,53 +30,33 @@ public class Spawner extends Actor
         int side = rand.nextInt(1, 5);
         int h = world.getHeight();
         int w = world.getWidth();
-        int whatSpawn = rand.nextInt(1,3);
         Enemy snake = new Enemy();
         Enemy2 archer = new Enemy2();
-        switch(whatSpawn){
-            case 0:{
-                switch(side){
-                    case 1:{
-                        world.addObject(snake, 0, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 2:{
-                        world.addObject(snake, rand.nextInt(0, w-1), 0);
-                        break;
-                    }
-                    case 3:{
-                        world.addObject(snake, w-1, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 4:{
-                        world.addObject(snake, rand.nextInt(0, w-1), h-1);
-                        break;
-                    }
-                }
+        int roll = rand.nextInt(100);
+        Actor[] choices = {null, snake, archer};
+        Actor toAdd = snake;
+        for(int i=1; i<chances.length; i++){
+            if(roll<=prefixSum[i]) toAdd = choices[i];
+            if(roll>prefixSum[i]) break;
+        }
+        switch(side){
+            case 1:{
+                world.addObject(toAdd, 0, rand.nextInt(0, h-1));
                 break;
             }
             case 2:{
-                switch(side){
-                    case 1:{
-                        world.addObject(archer, 0, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 2:{
-                        world.addObject(archer, rand.nextInt(0, w-1), 0);
-                        break;
-                    }
-                    case 3:{
-                        world.addObject(archer, w-1, rand.nextInt(0, h-1));
-                        break;
-                    }
-                    case 4:{
-                        world.addObject(archer, rand.nextInt(0, w-1), h-1);
-                        break;
-                    }
-                }
+                world.addObject(toAdd, rand.nextInt(0, w-1), 0);
+                break;
+            }
+            case 3:{
+                world.addObject(toAdd, w-1, rand.nextInt(0, h-1));
+                break;
+            }
+            case 4:{
+                world.addObject(toAdd, rand.nextInt(0, w-1), h-1);
                 break;
             }
         }
-        sleepFor(20);
+        sleepFor(spawnDelay);
     }
 }

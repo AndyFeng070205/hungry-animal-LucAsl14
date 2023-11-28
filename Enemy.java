@@ -23,6 +23,7 @@ public class Enemy extends Actor
             move(1);
             if(isTouching(Elephant.class)){
                 removeTouching(Elephant.class);
+                world.gameOver();
             }
     }
     

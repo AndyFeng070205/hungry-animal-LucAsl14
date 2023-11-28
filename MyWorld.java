@@ -20,7 +20,15 @@ public class MyWorld extends World
         super(1300, 700, 1);
         setBackground("background.jpg");
         addObject(elephant, getWidth()/2, getHeight()/2);
-        addObject(spawner, 0, 0);
+        addObject(spawner, -10, -10);
         addObject(counter, 1100, 50);
+    }
+    public void gameOver(){
+        Label gameOverLabel = new Label("Game Over...", 100);
+        addObject(gameOverLabel, getWidth()/2, getHeight()/2);
+        spawner.sleepFor(999999);
+    }
+    public void showUpgradeOptions(){
+        
     }
 }

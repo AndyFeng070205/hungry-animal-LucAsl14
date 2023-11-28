@@ -9,7 +9,7 @@ import java.lang.Math;
 public class Enemy2 extends Actor
 {
     int target = 400;
-    int shootTimer = 100;
+    int shootTimer = 150;
     /**
      * Act - do whatever the Enemy2 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -38,9 +38,9 @@ public class Enemy2 extends Actor
     public void shoot(){
         shootTimer--;
         if(shootTimer<=0){
-            EnemySpit s = new EnemySpit(4, getRotation());
+            EnemySpit s = new EnemySpit(3, getRotation());
             getWorld().addObject(s, getX(), getY());
-            shootTimer = 100;
+            shootTimer = 150;
         }
     }
 }
