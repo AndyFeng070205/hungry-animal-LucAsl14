@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Spit extends Actor
 {
     int vel, dir;
+    boolean isNew = true;
     public Spit(int velocity, int direction){
         vel = velocity;
         dir = direction;
@@ -19,17 +20,22 @@ public class Spit extends Actor
      */
     public void act()
     {
+        MyWorld world = (MyWorld)getWorld();
         if(isTouching(Enemy.class)
          ||isTouching(Enemy2.class)){
            removeTouching(Enemy.class);
            removeTouching(Enemy2.class);
-           ((MyWorld)getWorld()).counter.add(1);
+           world.counter.add(1);
            getWorld().removeObject(this);
            return;
+        }
+        if(Greenfoot.isKeyDown("SPACE")&&!world.elephant.checkExceed()&&isNew){
+            return;
         }
         while(getRotation()!=dir){
             turn(dir-getRotation());
         }
+        isNew = false;
         move(vel);
         if(isAtEdge()){
              getWorld().removeObject(this);

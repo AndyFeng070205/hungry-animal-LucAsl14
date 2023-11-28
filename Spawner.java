@@ -8,7 +8,7 @@ import java.util.*;
  */
 public class Spawner extends Actor
 {
-    int spawnDelay = 50;
+    int spawnDelay = 50; //temp (used to be 50)
     //spawn chances for {snake, archer}
     int[] chances = {0,     20,     80};
     int[] prefixSum = new int[chances.length+1];
