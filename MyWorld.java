@@ -24,8 +24,11 @@ public class MyWorld extends World
         addObject(counter, 1100, 50);
     }
     public void gameOver(){
-        Label gameOverLabel = new Label("Game Over", 100);
+        Label gameOverLabel = new Label("Game Over...", 100);
         addObject(gameOverLabel, getWidth()/2, getHeight()/2);
         spawner.sleepFor(999999);
+    }
+    public void showUpgradeOptions(){
+        
     }
 }

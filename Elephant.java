@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * @author (your name) 
  * @version (a version number or a date)
@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Elephant extends Actor
 {
     int shootTimer = 10;
+    Random rand = new Random();
     /**
      * Act - do whatever the Elephant wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,7 +25,8 @@ public class Elephant extends Actor
             turn(-4);
         if(Greenfoot.isKeyDown("SPACE")){
             if(shootTimer<=0){
-                Spit s = new Spit(6, getRotation());
+                int adjustment = rand.nextInt(51);
+                Spit s = new Spit(6, (getRotation()+adjustment-25+360)%360);
                 getWorld().addObject(s, getX(), getY());
                 shootTimer = 10;
             }

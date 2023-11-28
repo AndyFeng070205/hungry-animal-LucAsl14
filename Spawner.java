@@ -8,7 +8,9 @@ import java.util.*;
  */
 public class Spawner extends Actor
 {
-    int[] chances = {0, 30, 70};
+    int spawnDelay = 50;
+    //spawn chances for {snake, archer}
+    int[] chances = {0,     20,     80};
     int[] prefixSum = new int[chances.length+1];
     public Spawner(){
         for(int i=1; i<chances.length; i++){
@@ -30,7 +32,7 @@ public class Spawner extends Actor
         int w = world.getWidth();
         Enemy snake = new Enemy();
         Enemy2 archer = new Enemy2();
-        int roll = rand.nextInt(0,100);
+        int roll = rand.nextInt(100);
         Actor[] choices = {null, snake, archer};
         Actor toAdd = snake;
         for(int i=1; i<chances.length; i++){
@@ -55,6 +57,6 @@ public class Spawner extends Actor
                 break;
             }
         }
-        sleepFor(50);
+        sleepFor(spawnDelay);
     }
 }
