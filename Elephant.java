@@ -4,11 +4,11 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Elephant extends Actor
+public class Elephant extends SmoothMover
 {
     int shootTimer = 0;
     Random rand = new Random();
-    int spread = 50;
+    int spread = 25;
     int maxCount = 25; 
     public int currentCount = 0;
     /**
@@ -43,5 +43,12 @@ public class Elephant extends Actor
             return true;
         }
         return false;
+    }
+    
+    private void debugTest(){
+        for (int i=-spread/2; i<=spread/2; i++){
+            Spit s = new Spit(6, (getRotation()+i+360)%360);
+            getWorld().addObject(s, getX(), getY());            
+        }
     }
 }

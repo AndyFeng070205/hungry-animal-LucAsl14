@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Spit extends Actor
+public class Spit extends SmoothMover
 {
     int vel, dir;
     boolean isNew = true;
@@ -33,7 +33,7 @@ public class Spit extends Actor
             return;
         }
         while(getRotation()!=dir){
-            turn(dir-getRotation());
+            turn(1);
         }
         isNew = false;
         move(vel);

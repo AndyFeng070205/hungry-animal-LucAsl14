@@ -6,7 +6,7 @@ import java.lang.Math;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy2 extends Actor
+public class Enemy2 extends SmoothMover
 {
     int target = 400;
     int shootTimer = 150;
