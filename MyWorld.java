@@ -26,9 +26,8 @@ public class MyWorld extends World
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over...", 100);
         addObject(gameOverLabel, getWidth()/2, getHeight()/2);
-        spawner.sleepFor(999999);
-    }
-    public void showUpgradeOptions(){
-        
+        sleepFor(1000);
+        TitleScreen world = new TitleScreen();
+        Greenfoot.setWorld(world);
     }
 }
