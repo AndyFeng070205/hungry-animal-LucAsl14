@@ -6,16 +6,18 @@ import java.util.*;
  */
 public class Elephant extends SmoothMover
 {
-    int aniFrame = 0;
     int shootTimer = 0;
     Random rand = new Random();
     int spread = 25;
     int maxCount = 25; 
     public int currentCount = 0;
-    /**
-     * Act - do whatever the Elephant wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootImage[] images = new GreenfootImage[8];
+    public Elephant(){
+        for(int i=0; i<8; i++){
+            images[i] = new GreenfootImage("elephant_idle/idle"+i+".png");
+        }
+        aniTimer.mark();
+    }
     public void act()
     {
         shootTimer--;
@@ -53,18 +55,14 @@ public class Elephant extends SmoothMover
         }
         return false;
     }
+    int aniFrame = 0;
+    SimpleTimer aniTimer = new SimpleTimer();
     private void animate(){
-        int delay = 10;
-        if(aniFrame==delay*0) setImage("elephant_idle/idle0.png");
-        if(aniFrame==delay*1) setImage("elephant_idle/idle1.png");
-        if(aniFrame==delay*2) setImage("elephant_idle/idle2.png");
-        if(aniFrame==delay*3) setImage("elephant_idle/idle3.png");
-        if(aniFrame==delay*4) setImage("elephant_idle/idle4.png");
-        if(aniFrame==delay*5) setImage("elephant_idle/idle5.png");
-        if(aniFrame==delay*6) setImage("elephant_idle/idle6.png");
-        if(aniFrame==delay*7) setImage("elephant_idle/idle7.png");
-        aniFrame++;
-        if(aniFrame==delay*8) aniFrame = 0;
+        if(aniTimer.millisElapsed()>100){
+            aniFrame++; aniFrame%=images.length;
+            setImage(images[aniFrame]);
+            aniTimer.mark();
+        }
     }
     private void debugTest(){
         for (int i=-spread/2; i<=spread/2; i++){
