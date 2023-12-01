@@ -13,6 +13,7 @@ public class Spit extends SmoothMover
     public Spit(int velocity, int direction){
         vel = velocity;
         dir = direction;
+        setRotation(dir);
     }
     /**
      * Act - do whatever the Spit wants to do. This method is called whenever
@@ -32,13 +33,26 @@ public class Spit extends SmoothMover
         if(Greenfoot.isKeyDown("SPACE")&&isNew){
             return;
         }
-        while(getRotation()!=dir){
-            turn(1);
-        }
+        homeToDirection(world, world.elephant);
         isNew = false;
         move(vel);
         if(isAtEdge()){
              getWorld().removeObject(this);
         }
+    }
+    
+    private void homeToDirection(MyWorld world){
+        if(getRotation()!=world.elephant.getRotation()){
+            int turnSpeed;
+            int rotationDiff = getRotation()-world.elephant.getRotation();
+            if(rotationDiff>180
+             ||(rotationDiff<0 && rotationDiff>-180)){
+                 turnSpeed = 2;
+             } else {
+                 turnSpeed = -2;
+             }
+              
+            turn(turnSpeed);
+        }        
     }
 }
