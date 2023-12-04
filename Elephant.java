@@ -33,7 +33,7 @@ public class Elephant extends SmoothMover
             if(currentCount == 0)setImage("elephant.png");
             if(shootTimer<=0&&!checkExceed()){
                 float adj = rand.nextFloat();
-                Spit s = new Spit(6, (getRotation()+(int)(adj*spread-spread/2)+360)%360);
+                Spit s = new Spit(5, (getRotation()+(int)(adj*spread-spread/2)+360)%360);
                 getWorld().addObject(s, getX(), getY());
                 shootTimer = 10;
                 currentCount++;
@@ -45,6 +45,10 @@ public class Elephant extends SmoothMover
         } else {
             currentCount = 0;
             animate();
+        }
+        
+        if(Greenfoot.isKeyDown("q")){
+            HomingSpit hs = new HomingSpit(4, getRotation(), 
         }
     }
     public boolean checkExceed(){

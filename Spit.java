@@ -31,9 +31,14 @@ public class Spit extends SmoothMover
            return;
         }
         if(Greenfoot.isKeyDown("SPACE")&&isNew){
+            if(world.elephant.checkExceed()){
+                HomingSpit hs = new HomingSpit(vel-2, dir, world.elephant);
+                world.addObject(hs, getX(), getY());
+                world.removeObject(this);
+                return;
+            }
             return;
         }
-        homeToDirection(world, world.elephant);
         isNew = false;
         move(vel);
         if(isAtEdge()){
@@ -41,15 +46,15 @@ public class Spit extends SmoothMover
         }
     }
     
-    private void homeToDirection(MyWorld world){
-        if(getRotation()!=world.elephant.getRotation()){
+    protected void homeToDirection(int angle, int speed){
+        if(getRotation()!=angle){
             int turnSpeed;
-            int rotationDiff = getRotation()-world.elephant.getRotation();
+            int rotationDiff = getRotation()-angle;
             if(rotationDiff>180
              ||(rotationDiff<0 && rotationDiff>-180)){
-                 turnSpeed = 2;
+                 turnSpeed = -speed;
              } else {
-                 turnSpeed = -2;
+                 turnSpeed = speed;
              }
               
             turn(turnSpeed);
