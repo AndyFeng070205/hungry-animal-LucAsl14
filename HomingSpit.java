@@ -58,12 +58,11 @@ public class HomingSpit extends Spit
         turnTowards((double)x, (double)y);
     }
     public void turnTowards(double x, double y){
-        double dx = x-getExactX();
-        double dy = y-getExactY();
-        int intendedAngle = (int)(Math.toDegrees(Math.atan(dy/dx))+360)%360;
-        // if(Greenfoot.isKeyDown("R")){
-            // System.out.println(intendedAngle+" dx:"+dx+" dy:"+dy);
-        // }
-        homeToDirection(intendedAngle, 1);
+        double dx = getExactX()-x;
+        double dy = getExactY()-y;
+        int intendedAngle = (int)(Math.toDegrees(Math.atan(dy/dx)));
+        if(dx<0) intendedAngle = 180+intendedAngle;
+        if(dx>=0&&dy<0) intendedAngle = 360+intendedAngle;
+        homeToDirection(intendedAngle, 2);
     }
 }

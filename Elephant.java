@@ -12,6 +12,8 @@ public class Elephant extends SmoothMover
     int maxCount = 25; 
     public int currentCount = 0;
     GreenfootImage[] images = new GreenfootImage[8];
+    
+    boolean added = false;
     public Elephant(){
         for(int i=0; i<8; i++){
             images[i] = new GreenfootImage("elephant_idle/idle"+i+".png");
@@ -20,6 +22,7 @@ public class Elephant extends SmoothMover
     }
     public void act()
     {
+        MyWorld world = (MyWorld)getWorld();
         shootTimer--;
         if(Greenfoot.isKeyDown("d"))
             turn(4);
@@ -48,7 +51,14 @@ public class Elephant extends SmoothMover
         }
         
         if(Greenfoot.isKeyDown("q")){
-            HomingSpit hs = new HomingSpit(4, getRotation(), 
+            TestMarker t = new TestMarker();
+            world.addObject(t, world.getWidth()/2, world.getHeight()/2);
+            HomingSpit hs = new HomingSpit(4, getRotation(),t); 
+            
+            if(!added) world.addObject(hs, getX(), getY());
+            added = true;
+        } else {
+            added = false;
         }
     }
     public boolean checkExceed(){
