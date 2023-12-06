@@ -50,16 +50,16 @@ public class Elephant extends SmoothMover
             animate();
         }
         
-        if(Greenfoot.isKeyDown("q")){
-            TestMarker t = new TestMarker();
-            world.addObject(t, world.getWidth()/2, world.getHeight()/2);
-            HomingSpit hs = new HomingSpit(4, getRotation(),t); 
+        // if(Greenfoot.isKeyDown("q")){
+            // TestMarker t = new TestMarker();
+            // world.addObject(t, world.getWidth()/2, world.getHeight()/2);
+            // HomingSpit hs = new HomingSpit(4, getRotation(),t); 
             
-            if(!added) world.addObject(hs, getX(), getY());
-            added = true;
-        } else {
-            added = false;
-        }
+            // if(!added) world.addObject(hs, getX(), getY());
+            // added = true;
+        // } else {
+            // added = false;
+        // }
     }
     public boolean checkExceed(){
         if(currentCount > maxCount){

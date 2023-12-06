@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HomingSpit extends Spit
 {
-    double homedX, homedY, distance = 0; // 500
+    double homedX, homedY, distance = 500; // 500
     SmoothMover owner;
 
     public HomingSpit(int vel, int dir, SmoothMover owner){
         super(vel, dir);    
         this.owner = owner;
-        getImage().scale(50, 50);
+        getImage().scale(40, 40);
         updateHoming(owner);
     }
     public void updateHoming(SmoothMover owner){
@@ -50,6 +50,14 @@ public class HomingSpit extends Spit
             // TestMarker test = new TestMarker();
             // world.addObject(test, (int)homedX, (int)homedY);
         // }
+        double dx = getExactX()-homedX;
+        double dy = getExactY()-homedY;
+        if(Math.abs(dx)<2&&Math.abs(dy)<2){
+            Spit s = new Spit(vel+2, getRotation());
+            world.addObject(s, getX(), getY());
+            world.removeObject(this);
+            return;
+        } 
         if(isAtEdge()){
              getWorld().removeObject(this);
         }        
@@ -60,9 +68,10 @@ public class HomingSpit extends Spit
     public void turnTowards(double x, double y){
         double dx = getExactX()-x;
         double dy = getExactY()-y;
+        MyWorld world = (MyWorld) getWorld();
         int intendedAngle = (int)(Math.toDegrees(Math.atan(dy/dx)));
         if(dx<0) intendedAngle = 180+intendedAngle;
         if(dx>=0&&dy<0) intendedAngle = 360+intendedAngle;
-        homeToDirection(intendedAngle, 2);
+        homeToDirection(intendedAngle, 1);
     }
 }

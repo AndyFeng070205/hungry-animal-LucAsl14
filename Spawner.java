@@ -8,9 +8,9 @@ import java.util.*;
  */
 public class Spawner extends Actor
 {
-    int spawnDelay = 50000; //temp (used to be 50)
-    //spawn chances for {snake, archer}
-    int[] chances = {0,     20,     80};
+    int spawnDelay = 50; //temp (used to be 50)
+    //spawn chances for {archer,  snake}
+    int[] chances = {0,      20,     80};
     int[] prefixSum = new int[chances.length+1];
     public Spawner(){
         for(int i=1; i<chances.length; i++){
@@ -27,7 +27,7 @@ public class Spawner extends Actor
         //enemy making
         MyWorld world = (MyWorld) getWorld();
         Random rand = new Random();
-        int side = rand.nextInt(1, 5);
+        int side = rand.nextInt(5);
         int h = world.getHeight();
         int w = world.getWidth();
         Enemy snake = new Enemy();
