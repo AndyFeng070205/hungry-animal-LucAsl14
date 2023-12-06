@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HomingSpit extends Spit
 {
-    double homedX, homedY, distance = 500; // 500
+    double homedX, homedY, distance = 400;
     SmoothMover owner;
 
     public HomingSpit(int vel, int dir, SmoothMover owner){
