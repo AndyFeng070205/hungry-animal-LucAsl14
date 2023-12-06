@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class EnemySpit extends Actor
+public class EnemySpit extends SmoothMover
 {
     MyWorld world = (MyWorld) getWorld();
     int vel, dir;
