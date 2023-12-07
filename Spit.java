@@ -15,6 +15,12 @@ public class Spit extends SmoothMover
         dir = direction;
         setRotation(dir);
     }
+    public Spit(int velocity, int direction, boolean isNew){
+        vel = velocity;
+        dir = direction;
+        setRotation(dir);
+        this.isNew = isNew;
+    }
     /**
      * Act - do whatever the Spit wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

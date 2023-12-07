@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HomingSpit extends Spit
 {
-    double homedX, homedY, distance = 500; // 500
+    double homedX, homedY, distance = 400;
     SmoothMover owner;
 
     public HomingSpit(int vel, int dir, SmoothMover owner){
@@ -53,7 +53,7 @@ public class HomingSpit extends Spit
         double dx = getExactX()-homedX;
         double dy = getExactY()-homedY;
         if(Math.abs(dx)<2&&Math.abs(dy)<2){
-            Spit s = new Spit(vel+2, getRotation());
+            Spit s = new Spit(vel+2, getRotation(), false);
             world.addObject(s, getX(), getY());
             world.removeObject(this);
             return;

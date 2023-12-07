@@ -8,11 +8,13 @@ import java.util.*;
  */
 public class Spawner extends Actor
 {
-    int spawnDelay = 50; //temp (used to be 50)
+    int spawnDelay = 500;
     //spawn chances for {archer,  snake}
     int[] chances = {0,      20,     80};
     int[] prefixSum = new int[chances.length+1];
+    SimpleTimer timer = new SimpleTimer();
     public Spawner(){
+        timer.mark();
         for(int i=1; i<chances.length; i++){
             prefixSum[i] = chances[i]+prefixSum[i-1];
         }
@@ -23,11 +25,15 @@ public class Spawner extends Actor
      */
     public void act()
     {
-        
+        if(timer.millisElapsed()<spawnDelay){
+            return;
+        } else {
+            timer.mark();
+        }
         //enemy making
         MyWorld world = (MyWorld) getWorld();
         Random rand = new Random();
-        int side = rand.nextInt(5);
+        int side = rand.nextInt(4)+1;
         int h = world.getHeight();
         int w = world.getWidth();
         Enemy snake = new Enemy();
@@ -41,22 +47,22 @@ public class Spawner extends Actor
         }
         switch(side){
             case 1:{
-                world.addObject(toAdd, 0, rand.nextInt(0, h-1));
+                world.addObject(toAdd, 0, rand.nextInt(h-1));
                 break;
             }
             case 2:{
-                world.addObject(toAdd, rand.nextInt(0, w-1), 0);
+                world.addObject(toAdd, rand.nextInt(w-1), 0);
                 break;
             }
             case 3:{
-                world.addObject(toAdd, w-1, rand.nextInt(0, h-1));
+                world.addObject(toAdd, w-1, rand.nextInt(h-1));
                 break;
             }
             case 4:{
-                world.addObject(toAdd, rand.nextInt(0, w-1), h-1);
+                world.addObject(toAdd, rand.nextInt(w-1), h-1);
                 break;
             }
         }
-        sleepFor(spawnDelay);
+        // sleepFor(spawnDelay);
     }
 }
