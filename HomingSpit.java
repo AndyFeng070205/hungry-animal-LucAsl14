@@ -53,7 +53,7 @@ public class HomingSpit extends Spit
         double dx = getExactX()-homedX;
         double dy = getExactY()-homedY;
         if(Math.abs(dx)<2&&Math.abs(dy)<2){
-            Spit s = new Spit(vel+2, getRotation());
+            Spit s = new Spit(vel+2, getRotation(), false);
             world.addObject(s, getX(), getY());
             world.removeObject(this);
             return;
